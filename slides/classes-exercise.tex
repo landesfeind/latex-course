@@ -1,0 +1,24 @@
+\section{Writing own classes}
+
+\question Define an own class ''gaug-bio-proposal'' to be used for the
+Bachelor thesis proposal. This new class has to use the article class as base.
+Insert the basic typography rules for the proposal:
+\begin{itemize}
+	\item one-column, twosided
+	\item 10 to 11 pt font-size
+	\item 1.5 linespacing
+\end{itemize}
+
+\question Introduce the new command \lcs{supervisor} for authors in your new
+class. This commands will set the internal command \lcs{@supervisor} to
+contain the name of the supervisor supporting this thesis.
+
+\question Renew the \lcs{maketitle} to build a full titlepage, containing also
+the supervisor in the style you like. The text ''Georg-August-Universit\"at
+G\"ottingen\lcs{newline}Thesis Proposal'' has to come up at first. Then title,
+author and supervisor. Also try to visually separate them (e.g. using spaces
+or rules).
+
+\begin{solution}
+	\lstinputlisting{gaug-thesis-proposal.cls}
+\end{solution}

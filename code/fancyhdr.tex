@@ -1,0 +1,16 @@
+\usepackage{fancyhdr}
+\pagestyle{fancy} 
+
+% Clear head and foot by setting all empty
+\fancyhf{}
+
+% Specify header
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\rightmark} % shows chapter, so only for books/reports
+\renewcommand{\headrulewidth}{0.5pt}
+% Specify footer
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.5pt}
+
+\section{My first section}
+This section also contains some text.

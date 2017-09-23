@@ -1,0 +1,128 @@
+\section{Bibliography with Bib\TeX{}}
+
+\subsection{{\LaTeX} build in bibliography}
+\begin{frame}
+	Built in support for references using the \len{thebibliography} and
+	\lcs{cite} command
+	\codex{References using the build in bibliography}{thebibliography}
+\end{frame}
+\begin{frame}
+	\codex{References using the build in bibliography (define cite name)}{thebibliography-names}
+\end{frame}
+
+\subsection{Using a Bib{\TeX} library}
+\begin{frame}
+	The more {\LaTeX} way is a separate library using {Bib\TeX}
+	\codexBibtex{{Bib\TeX} library file}{bibtex-library}
+	Commands are located where the final bibliography will be included.
+\end{frame}
+\begin{frame}
+	\codex{Using the library in {\LaTeX}}{bibtex-bibliography}
+\end{frame}
+\begin{frame}
+	Compiling {\LaTeX} with {Bib\TeX} requires extra effort
+	\begin{columns}[onlytextwidth]
+		\column{0.35\textwidth}
+		\lstinputlisting[language=bash,keywords={pdflatex,bibtex}]{compile-with-bibtex.sh}
+		\column{0.64\textwidth}
+			\begin{enumerate}
+				\item create basic output file\\
+					\texttt{\tiny LaTeX Warning: Citation `lamport94' on ...
+					undefined}
+				\item include bibliography
+				\item compile with the bibliography\\
+					\texttt{\tiny LaTeX Warning: Label(s) may have changed. Rerun
+					...}
+				\item ensure the cross-references to be right
+			\end{enumerate}
+	\end{columns}
+\end{frame}
+
+
+\subsection{Using the \textbackslash{}cite command}
+\begin{frame}
+	\codex{Citing with optional argument}{cite-optional}
+\end{frame}
+\begin{frame}
+	Default {\LaTeX} bibliography uses numerical references (often used in
+	mathematics/computer science).
+
+	\codex{\lp{natbib} package supports named citing}{cite-natbib}
+
+	More possible commands are: \lcs{citep}, \lcs{citet*}, \lcs{citep*}
+
+	\warn{Natbib does not work with numerically referenced bibliographies}
+\end{frame}
+
+
+\subsection{Selecting an appropriate {Bib\TeX} style}
+\begin{frame}
+	Different styles can be used to produce different views
+	\begin{center}
+		\begin{tabular}{l|l|l|l}
+		\multicolumn{1}{c|}{Style Name} & \multicolumn{1}{c|}{Author Name Format} & \multicolumn{1}{c|}{Reference Format} & \multicolumn{1}{c}{Sorting} \\ \hline
+		plain & Homer Jay Simpson & \#ID\# & by author \\ \hline
+		unsrt & Homer Jay Simpson & \#ID\# & as referenced \\ \hline
+		abbrv & H. J. Simpson & \#ID\# & by author \\ \hline
+		alpha & Homer Jay Simpson & Sim95 & by author \\ \hline
+		abstract & Homer Jay Simpson & Simpson-1995a &  \\ \hline
+		acn & Simpson, H. J. & \#ID\# &  \\ \hline
+		authordate1 & Simpson, Homer Jay & Simpson, 1995 &  \\ \hline
+		apa & Simpson, H. J. (1995) & Simpson1995 &  \\ \hline
+		named & Homer Jay Simpson & Simpson 1995 &  \\ \hline
+		\end{tabular}
+	\end{center}
+
+	More styles at
+	\url{http://www.cs.stir.ac.uk/~kjt/software/latex/showbst.html}
+
+\end{frame}
+
+\subsection{Creating your own style for {Bib\TeX}}
+\begin{frame}
+	\begin{block}{Bib{\TeX} style files}
+		{Bib\TeX} libraries do not contain style information (only structured
+		information). 
+
+		Styles are stored as {\color{code}.bst} files (pure text).
+	\end{block}
+
+	\begin{block}{Creating an own style}
+		Simply execute \code{latex makebst} on the command line and respond to
+		the questions asked.
+
+		\textbf{Note:} Answering the last question ''Shall I now run this batch
+		job?'' with yes or executing it by yourself:
+		\code{latex my-style.dbj}
+		will result in a {\color{red}my-style.bst} (the actual style file).
+	\end{block}
+
+\end{frame}
+
+\subsection{Editing bibliography graphically}
+\begin{frame}
+	JabRef may be used to edit a {Bib\TeX} library
+	\begin{center}
+		\mimage{ss-jabref.png}
+
+		\url{http://jabref.sourceforge.net}
+	\end{center}	
+\end{frame}
+
+
+\begin{frame}
+	Also \href{http://www.zotero.org}{Zotero} can export {Bib\TeX}
+	\begin{center}
+		\mimage{ss-zotero-export.png}
+	\end{center}
+\end{frame}
+
+\subsection{Bib{\TeX} is supported by many online platforms}
+\begin{frame}
+	As {\LaTeX} is used extensively in academia, many online sources support Bib{\TeX}.
+	
+	JabRef can import several outside sources and Google Scholar provides Bib{\TeX} code:
+		\begin{center}
+		\mimage{bibtex_google_scholar.pdf}
+	\end{center}
+\end{frame}

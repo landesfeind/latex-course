@@ -1,0 +1,17 @@
+\documentclass{article}
+\usepackage{blindtext}
+\usepackage[english]{babel}
+\usepackage{arev}
+
+% AREV is used here as default
+\title{Select a font only for parts}
+\author{Manuel Landesfeind}
+\begin{document}
+\maketitle
+
+% Activate TIMES as normal font 
+\renewcommand{\rmdefault}{times}
+\normalfont
+
+\blindtext[1]
+\end{document}

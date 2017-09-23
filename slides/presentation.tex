@@ -1,0 +1,120 @@
+\documentclass[9pt]{beamer}
+\usepackage{latex-course}
+
+% Define Layout
+\usetheme[compress]{Berlin}
+\useinnertheme{circles}
+\useoutertheme{miniframes}
+
+\beamertemplatenavigationsymbolsempty
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+
+
+
+
+
+
+
+
+
+
+
+
+\AtBeginSection[]
+{
+	\begin{frame}{}
+	   {\Huge \insertsectionhead}
+		\begin{multicols}{2}	
+		\tableofcontents[currentsection,hideothersubsections]
+	\end{multicols}
+   \end{frame}
+}
+
+
+
+
+% Define a block for the code examples
+\newenvironment<>{codeblock}[1]{%
+  \begin{actionenv}%
+      \def\insertblocktitle{#1}%
+      \par%
+      \mode<presentation>{%
+        \setbeamercolor{block title}{fg=white,bg=orange!20!black}
+       \setbeamercolor{block body}{fg=black,bg=olive!50}
+       \setbeamercolor{itemize item}{fg=orange!20!black}
+       \setbeamertemplate{itemize item}[triangle]
+     }%
+      \usebeamertemplate{block begin}
+ }{
+ 	\par\usebeamertemplate{block end}\end{actionenv}
+}
+
+
+
+
+%% Display a code example
+% Usage: \codex[(no-)preview]{title}{file-basename}
+\newcommand{\codex}[3][include]{
+	% Create the header
+	\label{codex:#3}
+	\begin{codeblock}{#2 \hfill \tiny{(\href{run:../code/#3.tex}{Code}
+				\ifthenelse{\equal{#1}{no-preview}}{}{,
+		\href{run:../code/#3.pdf}{PDF}})}}
+	
+	% Start the columns when a preview is wanted
+	\ifthenelse{ \equal{#1}{no-preview} }{}{
+		\begin{columns}[onlytextwidth]
+		\column{0.49\linewidth} }
+
+	% Main Job: Include the code!
+	\lstinputlisting{#3.tex}
+
+	% Only include preview and columns of wanted
+	\ifthenelse{ \equal{#1}{no-preview} }{}{
+		\column{0.49\linewidth}
+			\ifthenelse{ \equal{#1}{no-preview} }{ 
+				% only include if preview is wanted
+			}{
+				\mimage{#3-crop.pdf}
+			}
+		\end{columns}
+	}
+	\end{codeblock}
+}
+
+%% Display bibtex codeblock
+\newcommand{\codexBibtex}[2]{
+	\begin{codeblock}{#1 \hfill \tiny{(\href{run:../code/#2.bib}{Code})}}
+		\lstinputlisting{#2.bib}
+	\end{codeblock}
+}
+
+\newcommand{\inote}[1]{\note[item]{#1}}
+
+
+\makeatletter
+\author[manuel@gobics.de]{\@author}
+\institute[http://www.gobics.de]{Manuel Landesfeind\\Department of Bioinformatics\\Institute for Microbiology and Genetics\\University of G\"ottingen}
+\date[07.-10.04.2015]{April 7th to 10th 2015}
+\makeatother
+
+
+\begin{document}
+\maketitle
+\input{introduction}
+\input{basic}
+\input{tables}
+\input{graphics}
+\input{floats}
+\input{math}
+\input{references}
+\input{bibliography}
+\input{customizing}
+\input{classes-styles-install}
+\input{layout}
+\input{writing-big-documents}
+\input{other-documents}
+\input{chemicals}
+\input{troubleshooting}
+\end{document}

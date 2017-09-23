@@ -1,0 +1,12 @@
+% This file was created with JabRef 2.8.1.
+% Encoding: UTF-8
+
+@BOOK{lamport94,
+  title = {{\LaTeX}: a document preparation system},
+  publisher = {Addison Wesley},
+  year = {1994},
+  editor = {Unkown},
+  author = {Leslie Lamport},
+  edition = {2nd Edition}
+}
+

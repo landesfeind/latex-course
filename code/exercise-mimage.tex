@@ -1,0 +1,30 @@
+\usepackage{fancybox}
+
+% images environment. Usage:
+% \mimage[textwidth=false]{path/to/img.ext}{label}{caption}
+% if the optional parameter is omitted it will scale the image to textwidth
+\newcommand{\mimage}[4][default] {
+  \begin{figure}[tp]
+   \begin{center}
+    \shadowbox{
+    \begin{minipage}{\textwidth - 15px}
+     \begin{center}
+      \ifthenelse{ \equal{default}{#1} }
+          { \includegraphics[width=\textwidth-30px]{#2} }
+          { \includegraphics[#1]{#2}                    }
+     \end{center}
+     \caption{#4}\label{fig:#3}
+    \end{minipage}
+    }
+   \end{center}
+  \end{figure}
+}
+
+\section{Test section}
+\blindtext[1]
+\paragraph{Now a Paragraph with image}
+\mimage[width=4cm]{default-image.pdf}{example}{This is an example using the
+default image}
+\blindtext[1]
+Additionally, we can reference figure \ref{fig:example}.
+\blindtext[1]

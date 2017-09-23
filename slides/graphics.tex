@@ -1,0 +1,94 @@
+\section{Images and graphics}
+
+\subsection{Excursion on image types}
+%\begin{frame}
+%	\begin{block}{Color spectra in informatics}
+%		
+%	\end{block}
+%\end{frame}
+
+\begin{frame}
+	\begin{columns}[onlytextwidth]
+	\column{0.6\textwidth}
+		\begin{block}{Bitmap-Images}
+			Every image/graphic consists of a specific $length$ and $width$. It is
+			separated into a grid of \emph{dots} (or \emph{pixel}):
+			Classically, for every dot the corresponding color is stored:
+		\end{block}
+			
+		\begin{exampleblock}{Examples}
+			\begin{itemize}
+				\item \href{http://de.wikipedia.org/wiki/JPEG}{Joint
+					Photographic Experts Group format (JPEG)}
+				\item \href{http://de.wikipedia.org/wiki/Portable_Network_Graphics}{Portable Network
+					Graphics (PNG)}
+				\item \href{http://de.wikipedia.org/wiki/GIF}{Graphics
+					Interchange format (GIF)}
+			\end{itemize}
+		\end{exampleblock}
+	\column{0.38\textwidth}
+		{\centering\mimage{graphics-dots-explained.pdf}}
+
+		{\tiny derived from \href{http://commons.wikimedia.org/wiki/File:Aufloesung\_erklaert.svg}{CC-BY-SA
+		v3.0 by Friedrich Graf}}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\begin{columns}[onlytextwidth]
+	\column{0.38\textwidth}
+		\mimage{graphics-svg-explained.pdf}
+	\column{0.6\textwidth}
+		\begin{block}{Vector graphics}
+			Store information about elements (e.g. circles and lines) to be drawn, with information
+			about the size and relation to each other.
+		\end{block}
+		\begin{exampleblock}{Examples}
+			\begin{itemize}
+			\item \href{http://de.wikipedia.org/wiki/SVG}{Scalable Vector Graphics (SVG)}
+			\item \href{http://de.wikipedia.org/wiki/Portable_Document_Format}{Portable	Document Format (PDF)}
+			\end{itemize}
+		\end{exampleblock}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\begin{block}{Comparing bitmap and vector graphics}
+		Vector graphics can be scaled to whatever size without loss of
+		precision.
+	\end{block}
+
+	\begin{columns}[onlytextwidth]
+	\column{0.49\textwidth}
+		\begin{exampleblock}{PNG image at 5, 50, 100 pixel size}
+			\includegraphics[width=5px]{default-image.png}
+			\includegraphics[width=50px]{default-image.png}
+			\includegraphics[width=100px]{default-image.png}
+		\end{exampleblock}
+	\column{0.49\textwidth}
+		\begin{exampleblock}{PDF image at same sizes}
+			\includegraphics[width=5px]{default-image.pdf}
+			\includegraphics[width=50px]{default-image.pdf}
+			\includegraphics[width=100px]{default-image.pdf}
+		\end{exampleblock}
+	\end{columns}
+\end{frame}
+		
+\subsection{Including graphical images}
+\begin{frame}
+	\begin{block}{Using the \lp{graphicx} package}
+		Images can be included with the \lcs{includegraphics} command.
+		They can be stored at different locations provided by \lcs{graphicspath}.
+	\end{block}
+	\codex{Simple image inclusion}{includegraphics}
+	{\tiny \href{../doc/graphicx.pdf}{(Graphixs-Documentation)}}
+\end{frame}
+\begin{frame}
+	\codex{Including scaled images}{includegraphics-scaled}
+\end{frame}
+\begin{frame}
+	\codex{Including images with defined with and height}{includegraphics-textwidth}
+\end{frame}
+\begin{frame}
+	\codex{Display part of image}{includegraphics-viewport}
+\end{frame}

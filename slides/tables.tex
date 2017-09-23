@@ -1,0 +1,147 @@
+\section{Tables}
+
+\subsection{Defining a basic table}
+\begin{frame}
+	\begin{block}{Basic table creation}
+		Tables are build with the \len{tabular} environment. This needs a
+		parameter defining the number of columns and their alignment:
+		\code{\textbackslash{}begin\{tabular\}\{column identifier\}}
+	\end{block}
+
+	Generally, creating tables in {\LaTeX} is not straightforward. Tools to
+	create tables will be explained later.
+\end{frame}
+
+\begin{frame}
+	\plabel{frm:tabular-column-identifier}
+	\begin{block}{Column identifier}
+		Is a text containing of alignment or line information:
+		\begin{mitemize}
+			\item l --- a normal column
+			\item c --- a centered column
+			\item r --- a right aligned column
+			\item \textbar --- a vertical border
+		\end{mitemize}
+	\end{block}
+	\begin{exampleblock}{Some examples on columns}
+		\begin{itemize}
+			\item \color{code}{l\textbar{}ccc}\\
+				4 columns. In every row, the first cell is left aligned and the other are
+				centered. A vertical border is drawn between the first and
+				second cell.
+			\item \color{code}{\textbar{}lccr\textbar{}}
+				Every row contains 4 cells, where the first is left and the
+				fourth is right aligned. The two cells in the middle are
+				centered. There a vertical borders before and after the row.
+		\end{itemize}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+	\begin{block}{Table contents}
+		Full {\LaTeX} support with special syntax for
+		\begin{mdescription}
+			\item[\&] creates a new cell
+			\item[\textbackslash\textbackslash{}] new row
+			\item[\lcs{hline}] create a horizontal line
+			\item[\lcs{newline}] a new line within the \emph{current cell}
+		\end{mdescription}
+	\end{block}
+
+	\codex{Basic table}{tabular-basic}
+\end{frame}
+
+\subsection{Paragraph columns}
+\begin{frame}
+	
+	Columns with a very long text (e.g. description) may be longer
+	than the available page space.
+	
+	\codex{Column with overfill}{tabular-column-p-1}
+
+\end{frame}
+\begin{frame}
+	\begin{block}{Paragraph columns}
+		Paragraph columns perform automatic line breaking and have a defined
+		with:
+		\begin{mdescription}
+			\item[p\{width\}] text aligned to top of cell
+			\item[m\{width\}] text in the middle
+			\item[b\{width\}] text to bottom
+		\end{mdescription}
+	\end{block}
+	\codex{Column with overfill (revised)}{tabular-column-p-2}
+\end{frame}
+\begin{frame}
+	\begin{block}{The \lp{tabularx} package}
+		This package introduces the \len{tabularx} and \emph{X} column identifier with automatic
+		calculation for the required size.
+	\end{block}
+	\codex{Usage of the \lp{tabularx} package}{tabular-tabularx}
+\end{frame}
+
+\subsection{Borders and lines}
+\begin{frame}
+	\begin{block}{More horizontal lines}
+		The \lcs{cline\{i-j\}} command creates a border from the cell $i$ to $j$
+	\end{block}
+	\codex{Example using \lcs{cline}}{tabular-cline}
+\end{frame}
+\begin{frame}
+	\codex{Using @ to define the cell separator}{tabular-column-at}
+\end{frame}
+
+\subsection{Spanning rows, columns, and tables}
+\begin{frame}
+	\codex{Spanning multiple columns}{tabular-multicolumn}
+	\lcs{multicolumn} requires three arguments
+	\begin{menumerate}
+		\item number of columns to span
+		\item text alignment (see slide \pageref{frm:tabular-column-identifier})
+		\item content of the spanned cell
+	\end{menumerate}
+\end{frame}
+\begin{frame}
+	\codex{Spanning multiple row}{tabular-multirow}
+	\code{\textbackslash{}multirow\{num rows\}\{width\}\{content\}}
+\end{frame}
+\begin{frame}
+	\codex{Spanning a table to multiple pages}{tabular-longtable}
+\end{frame}
+
+\subsection{Tools to generate {\LaTeX} tables}
+\begin{frame}
+	\begin{block}{Calc2Latex}
+		Macro for Libre-/OpenOffice:
+		\url{http://sourceforge.net/projects/calc2latex}
+		After installation, select parts to export and run the \emph{Main}
+		macro.
+	\end{block}
+
+	\begin{block}{Excel2LaTeX\hfill{\small (untested)}}
+		Add-In for Excel is available at:
+		\url{http://www.ctan.org/tex-archive/support/excel2latex}
+	\end{block}
+
+	\begin{block}{Webservice converter}
+		An online converter is available at:
+		\url{http://www.tablesgenerator.com/}
+	\end{block}
+\end{frame}
+
+\subsection{Useful hints}
+\begin{frame}
+	\begin{block}{Long words}
+		{\LaTeX} never hyphenates the first word of a paragraph. To disable this in tables use \lcs{hspace\{0cm\}}.
+	\end{block}
+	\begin{block}
+		Generated tables sometimes use a lot of unnecessary \lcs{multirow} commands. Check the generated tables.
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\begin{block}{Commands for every cell}
+		It is possible to include a command before and after the content of every cell using the \lsc{>\{\textbackslash{}cmd\}} and \lsc{<\{\textbackslash{}cmd\}} syntax of the lp{array} package. This can be combined with \lcs{newcolumntype\{\}\{\}}.
+	\end{block}
+	\codex{centered tabularx}{tabular-tabularx-centered}
+\end{frame}

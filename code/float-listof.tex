@@ -1,0 +1,15 @@
+\usepackage{float}
+
+% Create a new environment to contain examples
+\newfloat{example}{tp}{exmpls}
+
+% print a list of the new environment
+\listof{example}{List of examples}
+
+% use the new environment
+\begin{example}
+	\begin{center}
+		This is some text example.
+	\end{center}
+	\caption{Our first example float}	
+\end{example}

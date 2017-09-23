@@ -1,0 +1,12 @@
+\section{Troubleshooting and remarkable problems}
+
+\subsection{Too many packages added}
+\begin{frame}
+	While including many different packages, an error may occure:
+		\code{! No room for a new \textbackslash{}dimen .
+			\textbackslash{}ch@ck ...\textbackslash{}else
+			\textbackslash{}errmessage \{No room for
+		a new \#3\}}
+	this can be prevented if the $\epsilon$-package can be added:
+	\code{\textbackslash{}usepackage\{etex\}}
+\end{frame}

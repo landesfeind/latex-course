@@ -1,0 +1,80 @@
+\section{Customizing {\LaTeX}}
+
+\subsection{Writing own commands}
+\begin{frame}
+	New commands can be created with the \lcs{newcommand} or redefined with
+	the \lcs{renewcommand}.
+	\codex{Creating a command for simpler quotes}{newcommand-quotes}
+	\code{\lcs{newcommand}\{\textbackslash{}name\}[num params]\{definition\}}
+	\pause
+	\codex{Creating a command to display organism names}{newcommand-ecoli}
+\end{frame}
+\begin{frame}
+	\codex{Redefining \lcs{emph} to be colored}{renewcommand-emph-color}
+\end{frame}
+\begin{frame}
+	\codex{Recursive defining of params}{renewcommand-emph-recursive}
+\end{frame}
+
+\subsection{Working with parameters}
+\begin{frame}
+	Commands can be given parameter which are accessed via the \#1, \#2, ...
+	\#9 commands.
+
+	\begin{block}{Default parameter}
+		A default parameter can be given to \lcs{(re)newcommand}
+		\code{\textbackslash{}newcommand\{\textbackslash{}cmd-name\}[num-params][default-for-\#1]\{definition\}}
+	\end{block}
+
+	\codex{Newcommand with a default parameter}{newcommand-default-param}
+
+\end{frame}
+\begin{frame}
+	Be careful with overriding commands as they might be needed in other
+	packages etc.
+
+	\codex{Using \lcs{providecommand} for safety}{providecommand}
+\end{frame}
+
+
+\subsection{New environments}
+\begin{frame}
+	\codex{Create a new environment}{newenvironment}
+\end{frame}
+\begin{frame}
+	Creating a new environment using a parameter at the end:
+	\codex[no-preview]{Paramter in the end block will
+	fail}{newenvironment-endparam-fail}
+	will result in\code{Illegal parameter number in definition of \textbackslash{}end myquote.}
+\end{frame}
+\begin{frame}
+	Define a command to (temporary) store the parameter
+	\codex{\lcs{myquoteendparam} as temporary store}{newenvironment-endparam}
+\end{frame}
+
+
+\subsection{Control structures in {\LaTeX}}
+%\begin{frame}
+%	\codex{If-Then-Else structures
+%	\footnote{\lcs{StrChar\{\#1\}\{1\}} simply returnes the first letter in
+%		the organism name.}}{ifthenelse-equal}
+%	\warn{The \lp{ifthen} package is considered obsolete}
+%\end{frame}
+\begin{frame}
+	\codex{If-Then-Else structures with the \lp{etoolbox}
+	package}{ifthenelse-etoolbox}
+\end{frame}
+
+
+
+\subsection{Useful packages}
+\begin{frame}
+	\begin{block}{\href{http://www.ctan.org/pkg/xstring}{\lp{xstring}}}
+		provides functions for string testing
+		\begin{center}\lcs{IfSubStr} and \lcs{IfEq}\end{center}
+		and manipulation
+		\begin{center}\lcs{StrSubstitute},\lcs{StrMid}, and
+			\lcs{StrDel}\end{center}
+	\end{block}
+\end{frame}
+

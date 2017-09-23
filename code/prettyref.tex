@@ -1,0 +1,11 @@
+\usepackage{prettyref}
+\newrefformat{ssec}{sub-section \ref{#1}}
+
+\section{My section}
+\label{sec:section1}
+
+\subsection{The first subsection}
+\label{ssec:subsec1}
+
+Lorem ipsum dolor in \prettyref{sec:section1} and more precice in
+\prettyref{ssec:subsec1}, ...

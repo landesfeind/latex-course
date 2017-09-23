@@ -1,0 +1,18 @@
+\usepackage{caption}
+\usepackage{subcaption}
+
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\centering
+		\includegraphics[width=10px]{default-image.pdf}
+		\caption{At 10 px}
+	\end{subfigure}%
+	\hspace{1cm}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\centering
+		\includegraphics[width=50px]{default-image.pdf}
+		\caption{At 50px}
+	\end{subfigure}
+	\caption{The default image at different resolutions}
+\end{figure}

@@ -1,0 +1,166 @@
+\section{Basic typography}
+
+\subsection{Getting started with {\LaTeX}}
+\begin{frame}
+	\begin{block}{Document class}
+		\lcs{documentclass} specifies the type of the document and basic
+		layout options. Available document classes are:
+		\begin{description}
+			\item[article] for journal articles and small texts
+			\item[report] longer text e.g. thesis, small books
+			\item[book] with parts and chapters
+			\item[letter] for old-school communication
+			\item[beamer] for presentations (see later)
+		\end{description}
+	\end{block}
+
+	\begin{block}{German Layouts}
+		For a more feasible german layout the KOMA-Script classes can be
+		used\footnote{\url{http://www.ctan.org/pkg/koma-script}}:
+		\begin{center}\begin{tabular}{l@{$\rightarrow$}r}
+		article & scrartcl\\
+		 report & scrreprt\\
+		book & scrbook
+		\end{tabular}\end{center}
+	\end{block}
+\end{frame}
+\begin{frame}
+	\begin{block}{Commands}
+		Can be used to modify the text, include images and everything else.
+		A command
+		\code{{\textbackslash}command[optional argument(s)]\{required
+		argument\}}
+		always start with a backslash ''\textbackslash'' followed by the
+		command name. Optional and/or required arguments may be added.
+	\end{block}
+	An already known command is the \lcs{documentclass} but now with more
+	details:
+	\code{\textbackslash{}documentclass[9pt,a4paper,twosided,draft]\{article\}}
+\end{frame}
+\begin{frame}
+	\begin{block}{{\LaTeX} groups}
+		Some (low-level) arguments do not take arguments but effect more than
+		you would expect
+		\codex{Without grouping}{commands-without-restriction}
+		This can be changed by using braces to build groups
+		\codex{Now with grouping}{commands-without-restriction-2}
+	\end{block}
+	\inote{Emphasize on the missing space after {\LaTeX}, the expanded TT-Font
+	and the full centering of all the text.}
+\end{frame}
+\begin{frame}
+	\begin{block}{{\LaTeX} environments}
+		Used to modify blocks of content (e.g. centering text):
+		\codex{Aligning text}{text-align}
+	\end{block}
+\end{frame}
+\begin{frame}
+	\begin{block}{{\LaTeX} packages}
+		Additional plugins/modules called \emph{packages} can be included for
+		more features like
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item inlcuding images
+				\item extra-long tables
+				\item mathematical formulas
+				\item drawing chemical structure formulas
+				\item spliting list in multiple rows (as demonstrated here)
+			\end{itemize}
+		\end{multicols}
+	\end{block}
+
+	\begin{block}{Using packages}
+		Packages need to be included with
+		\code{{\textbackslash}usepackage[optional arguments]\{package name\}}
+		e.g. for easy including images:
+		\code{{\textbackslash}usepackage\{graphicx\}}
+	\end{block}
+
+	A full list of available packages is available at
+	\url{http://www.ctan.org/pkg}
+\end{frame}
+
+\subsection{More {\LaTeX} characteristics}
+\begin{frame}
+	\begin{block}{Whitespaces}
+		Multiple whitespaces (e.g. space, tab-space, enter) are ignored in
+		\LaTeX{}
+	\end{block}
+	\codex{Newlines can be added manually}{newlines}
+\end{frame}
+
+\begin{frame}
+	\begin{block}{Comments}
+		Additional text, that is not displayed at the end can be added
+		after \%
+	\end{block}
+	\codex{Comment example}{comment}
+\end{frame}
+
+\begin{frame}
+	\begin{block}{Special characters}
+		{\LaTeX} uses special characters e.g. ''\textbackslash'' to start
+		commands or ''\%''
+		for comments. If these symbols should be printed, they need to be 
+		escaped.
+	\end{block}
+	\codex{Special characters require escaping}{special-characters}
+
+	\LaTeX{} provides support for $> 5000$ symbols which are listed at 
+	\url{http://www.ctan.org/pkg/comprehensive}
+\end{frame}
+
+\subsection{Structuring text}
+\begin{frame}
+	\codex{Structures}{structures}
+\end{frame}
+\begin{frame}
+	\codex{Table of contents}{tableofcontents}
+	Further available commands are \lcs{listoffigures} and \lcs{listoftables}.
+\end{frame}
+
+\subsection{Lists}
+\begin{frame}
+	\codex{Enumeration}{enumerate}
+\end{frame}
+\begin{frame}
+	\codex{Item list}{itemize}
+\end{frame}
+\begin{frame}
+	\codex{Description}{description}
+\end{frame}
+
+\subsection{Font formatting}
+\begin{frame}
+	\begin{alertblock}{Warning}
+		It is strongly discouraged to perform direct formatting of text! Later
+		we will learn better methods. Nevertheless, these commands are needed
+		and therefore listed here.
+	\end{alertblock}
+
+	The creation of new commands to wrap semantics into layouts is described
+	later.
+\end{frame}
+\begin{frame}
+	\codex{Different font sizes}{font-size}
+\end{frame}
+
+\begin{frame}
+	\codex{Direct format of text}{font-format}
+\end{frame}
+
+\begin{frame}
+	Fonts have to be prepared for {\LaTeX} therefor it can not use the normal
+	fonts on the system.
+
+	\begin{block}{Font types}
+		{\LaTeX} provides a variety of fonts as listed on
+		\url{http://www.tug.dk/FontCatalogue}
+	\end{block}
+
+	\begin{block}{True-Type fonts}
+		System fonts (mostly TTF) can be incorporated in {\LaTeX} which is not
+		explained here. Please refer to
+		\href{http://en.wikibooks.org/wiki/LaTeX/Fonts}{the {\LaTeX} WikiBook}
+	\end{block}
+\end{frame}

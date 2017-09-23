@@ -1,0 +1,119 @@
+\section{Floating environments}
+\subsection{On floats}
+\begin{frame}
+	Floats are containers for images, tables, and user-defined contents
+	\begin{columns}[c]
+	\column{0.4\textwidth}
+	\begin{itemize}
+		\item auto-placed: floats do not appear at the position they are
+			defined
+		\item un-broken: a float can/will not stretch over more than 1
+			page
+	\end{itemize}
+	\column{0.59\textwidth}
+	Available by default: 
+	\begin{itemize}
+		\item \len{figure}
+		\item \len{table}
+	\end{itemize}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\begin{block}{Caption}
+		\lcs{caption} adds a caption to the current float, via
+		\code{\textbackslash{}caption[short variant]\{My caption\}}
+	\end{block}
+
+	\begin{block}{Float counter}
+		Every float environment has an own counter for later reference.
+	\end{block}
+\end{frame}
+
+\subsection{The figures float}
+\begin{frame}
+	Used for graphics...
+	\codex{Graphic in a figure float}{figure}
+\end{frame}
+
+
+\subsection{The table float}
+\begin{frame}
+	... And for tables.
+	\codex{A table in a float}{table}
+\end{frame}
+
+\subsection{Placing the floats}
+\begin{frame}
+	\codex{Defining a specific placement}{floats-placement}
+
+	\begin{description}
+		\item[h] places the float approximately here
+		\item[t] at the top of a page
+		\item[b] at the bottom of a page
+		\item[p] put floats together on a page containing only floats
+		\item[H] put the float exactly here (requires \lp{float} package)
+	\end{description}
+\end{frame}
+\subsection{More layout options with floats}
+\begin{frame}
+	\codex{Captions on the side}{floats-sidecap}
+\end{frame}
+\begin{frame}
+	\codex{Wrapping text around figures}{floats-wrapfig}
+\end{frame}
+\begin{frame}
+	\codex{Having subfloats}{floats-subfloats}
+\end{frame}
+
+\subsection{Creating an index for floats}
+\begin{frame}
+	Creating an index of figures and tables is trivial:
+	\codex{Index of the figures used}{listoffigures}
+	Lists of tables are created with the \lcs{listoftables}
+\end{frame}
+\begin{frame}
+	Also own floats can be printed as list
+	\codex{List of own floats}{float-listof}
+\end{frame}
+\begin{frame}[plain]
+	\warn{List generally are not displayed in the the table of contents!}
+	\codex{Including list into the table of
+	contents}{tableofcontents-include-other-lists}
+	The \lcs{phantomsection} is required for the correct page number.
+	\lcs{addcontentsline} creates label to be references.
+\end{frame}
+
+
+\subsection{Creating new floats}
+\begin{frame}
+	\codex{Creating a custom float for computer source code}{floats-custom-np}
+\end{frame}
+\begin{frame}
+	\begin{itemize}
+		\item \lcs{floatstyle} - define the default style for new floats\\
+			\begin{itemize}
+				\item plain - normal layout
+				\item plaintop - normal layout with caption above float
+				\item boxed - a box around the float with caption outside
+				\item ruled - using rules (see example)
+			\end{itemize}
+		\item \lcs{newfloat} - creates the new float with the given name\\
+			\code{\textbackslash{}newfloat\{name\}\{placement
+					identifiers\}\{listname\}[outer
+				counter name]}
+				Captions are written to the \texttt{listname} file to be used in
+				lists. If outer counter is given it will prefix the counter
+				(e.g. chapter, section)
+		\item \lcs{floatname} - set name for new float
+	\end{itemize}
+\end{frame}
+
+\subsection{Layout captions}
+\begin{frame}
+	Extended format specifications via the
+\href{http://www.ctan.org/pkg/caption}{\lp{caption}}
+
+	\codex{Decrease caption indent}{captionsetup}
+\end{frame}
+

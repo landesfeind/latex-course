@@ -1,0 +1,25 @@
+\documentclass[a4paper,11pt]{exam}
+\usepackage{latex-course}
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=1cm]{geometry}
+
+\printanswers
+
+\definecolor{SolutionColor}{rgb}{0.8,0.9,1}
+\qformat{\textbf{Exercise \thequestion:}\hfill}
+\renewcommand{\solutiontitle}{\noindent\textbf{Solution:}\par\noindent}
+
+\newcommand{\codesol}[1]{
+	\lstinputlisting[caption={#1 (\href{run:../code/#1.pdf}{PDF})}]{#1.tex}
+}
+	
+
+\title{\title\\Excerises}
+
+\begin{document}
+
+\begin{questions}
+\include{customizing-exercise}
+\include{classes-exercise}
+\end{questions}
+
+\end{document}

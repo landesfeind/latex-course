@@ -1,0 +1,134 @@
+\section{Customizing {\LaTeX}}
+
+\question Create a command \lcs{organism} to layout organism names. Use this
+command to create abbreviating command for the organisms in your work. Last,
+replace the occurences of organisms with the commands.
+\begin{solution} 
+	\begin{lstlisting}
+\newcommand{\organism}[3][long]{
+	\ifstreq{#1}{short}{
+		\textit{\StrChar{#1}{1}}
+	}{
+		\textit{#1 #2}
+	}
+}
+\newcommand{\ath}[1][long]{\organism[#1]{Arabidopsis}{thaliana}}
+\end{lstlisting}
+\end{solution}
+
+\question Create a general command to display chemical elements, e.g.
+``O$_4^{4-}$''. The command should be used as: 
+\begin{center}\lcs{element}[4-]\{O\}\{4\}\end{center}
+Then create a custom command to be used in the chemical sum formulas of
+your document, e.g.:
+\begin{center}
+	S\lcs{water}[4-]\{4\}
+\end{center}
+to produce
+	\begin{center}
+		SO$_4^{4-}$
+	\end{center}
+Tipp: have a look at the \lcs{ensuremath} command.
+\begin{solution} 
+	\begin{lstlisting}
+\usepackage{amsmath}
+\newcommand{\element}[3][]{#2\ensuremath{_{#3}^{#1}}}
+\end{lstlisting}
+\end{solution}
+
+
+\question Redefine the command \lcs{paragraph} to insert a newline after the
+bold face text. \warn{\lcs{paragraph} requires something after the bold face
+text. Otherwise an error will be thrown!}
+\begin{solution}
+	\lstinputlisting{renewcommand-paragraph}
+\end{solution}
+
+\question Redefine \lcs{listoffigures} to automatically be appended into the
+table of contents.
+\begin{solution}
+	\begin{lstlisting}
+\usepackage{hyperref}
+
+\let\oldListOfFigures\listoffigures
+\renewcommand{\listoffigures}{
+	\oldListOfFigures
+	\phantomsection % used for links
+	\addcontentsline{toc}{section}{List of Figures}
+}
+\end{lstlisting}
+\end{solution}
+
+\question Create a command \lcs{mimage} to include images into a floating
+environment. The command has the following parameter
+\begin{enumerate}
+	\item filename of the image
+	\item a label for the image that is automatically prefixed with ''fig:''
+	\item the caption for the image
+	\item optional parameters for the \lcs{includegraphics} command (e.g. to
+		specify the width/height
+\end{enumerate}
+The command is then used like this:
+\begin{lstlisting}[language=TeX]
+\mimage{images/myimage.jpg}{labelname}{Here goes a description of the image}
+\mimage[width=\textwidth]{images/myimage.jpg}{labelname}{Here goes a description of the image}
+\end{lstlisting}
+
+\textbf{Optional:} Use the
+\href{http://www.ctan.org/pkg/fancybox}{\lp{fancybox} package} to draw a box around the image
+\emph{including} the caption.
+
+\begin{solution}
+	Note that this is only one possible solution. There might be more:
+	\codesol{exercise-mimage}
+\end{solution}
+
+
+\question Create the \len{myquote} environment to contain quotes from other
+sources you like to quote. The new environment needs to have one mandatory
+parameter and should be used like this:
+\begin{lstlisting}
+\begin{myquote}{name of the quoted person}
+	The quote itself.
+\end{myquote}
+\end{lstlisting}
+
+The environment shall produce the following layout (including the image):
+\begin{center}
+	\includegraphics[width=0.7\textwidth]{exercise-quote.pdf}
+\end{center}
+
+{\small Try the \href{http://www.golatex.de/wiki/index.php?title=minipage}{\len{minipage}
+environment}}
+\begin{solution}
+	\codesol{exercise-myquote}
+\end{solution}
+
+
+\question Enhance the \lcs{organism} command to automatically abbreviate the
+genus part of the organism from the second usage on.
+\begin{lstlisting}[language=TeX]
+\newcommand{\organism}[2]{ ... }
+\newcommand{\ath}{\organism{Arabidopsis}{thaliana}}
+
+\ath \ath
+\end{lstlisting}
+
+This should produce the following: \textit{Arabidopsis thaliana}, \textit{A.
+thaliana}.
+
+\begin{solution}
+	\begin{lstlisting}[language=TeX]
+	\usepackage{etoolbox}
+
+	\newcommand{\organism}[2]{
+		\providetoggle{org#1#2}
+		\iftoggle{org#1#2}{
+			\textit{\StrChar{#1}{1}. #2}
+		}{
+			\textit{#1 #2}
+			\toggletrue{org#1#2}
+		}
+	}
+	\end{lstlisting}
+\end{solution}

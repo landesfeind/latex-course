@@ -1,0 +1,210 @@
+\section{Defining an own layout}
+
+\subsection{Specify the page layout}
+\begin{frame}
+	\begin{block}{Documentclass options}
+		The different document classes provide options for basic setup
+	\end{block}
+	\begin{itemize}
+		\item oneside, twoside - used in books and reports to change the area to be
+			printed (also page headers can change)
+		\item onecolumn, twocolumn - change to twocolumn layout
+		\item 10pt, 11pt, 12pt - specify the default font size
+		\item a4paper, letterpaper - for ouput size
+	\end{itemize}
+\end{frame}
+
+\subsection{Changing text layout}
+\begin{frame}
+	\begin{block}{Setting the text font}
+		{\LaTeX} provides many fonts\footnote{see {\LaTeX} Font Catalogue at \url{http://www.tug.dk/FontCatalogue/}}
+	\end{block}
+	\codex{Changing the font for the whole document}{arev-np}
+\end{frame}	
+\begin{frame}
+	\codex{Changing font for parts}{rmdefault-np}
+	\begin{mitemize}
+		\item \lcs{rmdefault} (default roman font)
+		\item \lcs{ttdefault} (default monospace font)
+		\item \lcs{sfdefault} (default serif font)
+	\end{mitemize}
+\end{frame}
+\begin{frame}
+	\codex{Change paragraph indention (hard way)}{indention}
+	\warn{Changing \lcs{parskip} \emph{may} have side-effects}
+\end{frame}
+\begin{frame}
+	Using specialized documentclasses can help
+	\codex{Paragraph indention with KOMA-Script}{indention-koma-np}
+\end{frame}
+\begin{frame}
+	\codex{Setting linespacing}{linespacing}
+\end{frame}
+\begin{frame}
+	\codex{Additional handling for lists}{linespacing-lists}
+\end{frame}
+
+%\section{Customizing headings and captions}
+%\begin{frame}
+%	Two packages can be used for an easy changing of headings (chapter,
+%	section, \ldots) and captions.
+%
+%	\codex[no-preview]{Using the \lp{titlesec}, \lp{caption} packages}{titlesec-caption}
+%\end{frame}
+
+\subsection{Setting page margins}
+\begin{frame}
+	\begin{block}{The \lp{geometry} package}
+		supports the specification of document-wide margins
+	\end{block}
+	\codex{Setting page margins (1)}{geometry-1-np}
+\end{frame}
+\begin{frame}
+	\codex{Setting page margins (2)}{geometry-2-np}
+\end{frame}
+
+\subsection{Custom header and footer}
+\begin{frame}
+	\begin{block}{Build-in methods}
+		{\LaTeX} provides pagestyles \texttt{empty}, \texttt{plain},
+		\texttt{headings}, \texttt{myheadings}.
+	\end{block}
+	\codex{The \lcs{pagestyle} command}{pagestyle}
+\end{frame}
+\begin{frame}
+	A more convenient solutions with the \lp{fancyhdr} package
+	\codex{The \lp{fancyhdr} supports the layout of head and foot lines}{fancyhdr}
+\end{frame}
+\begin{frame}
+	\begin{block}{Changing header and footer}
+		\begin{mitemize}
+			\item \lcs{fancyhead} \item \lcs{fancyfoot}
+		\end{mitemize}
+	\end{block}
+	\begin{block}{Select part to change}
+		\begin{mitemize}
+			\item \ubf{Left} \item \ubf{Center} \item \ubf{Right} 
+			\item \ubf{Left} on \ubf{odd} pages (LO)
+			\item \ubf{Left} on \ubf{even} pages (LE)
+			\item \ubf{Right} on \ubf{odd} pages (RO)
+			\item \ubf{Right} on \ubf{even} pages (RE)
+			\item \ubf{Center} on \ubf{odd} pages (CO)
+			\item \ubf{Center} on \ubf{even} pages (CE)
+		\end{mitemize}
+		Can also be combined using comma
+		\code{\lcs{fancyhead}[LE,RO]\{\lcs{leftmark}\}}
+	\end{block}
+	\begin{block}{Useful commands}
+		\begin{mitemize}
+				\item \lcs{leftmark} 
+				\item \lcs{rightmark}
+					current chapter name in different styles
+				\item \lcs{thechapter} current chapter number
+				\item \lcs{chapter} translation of ''chapter'' in the current
+					language
+				\item \lcs{thesection} current section number
+			\item \lcs{thepage} current page number
+		\end{mitemize}
+	\end{block}
+\end{frame}
+\begin{frame}
+	\begin{block}{Specify profiles}
+		Define sets of rules that can later be activated with \lcs{pagestyle}
+	\end{block}
+	\codex{Define pagestyle ''default''}{fancyhdr-profile}
+\end{frame}
+\begin{frame}
+	\begin{block}{Override profiles}
+		\lcs{fancypagestyle} allows to override  existing pagestyles
+	\end{block}
+	\codex{Overriding ''plain''}{fancyhdr-profile-override}
+\end{frame}
+\begin{frame}
+	\begin{block}{Common problem: pagestyle on specific pages}
+		Specific pages/commands change the pagestyle for current site to
+		``plain'', e.g. table of contents and the \lcs{chapter} command.
+	\end{block}
+
+	\begin{block}{Possible scenarios}
+		\begin{enumerate}
+			\item table of contents \textbf{and} chapter should pages look
+			like all other pages $\rightarrow$ override the ``plain'' style (see
+			slide \pageref{codex:fancyhdr-profile-override}).
+		\item TOC should be one style, but chapter pages another $\rightarrow$
+			define ``plain'' to your needs; issue chapter to call
+			\lcs{thispagestyle}
+		\end{enumerate}
+	\end{block}
+\end{frame}
+\begin{frame}
+	\codex{Plain TOC and fancy chapter page}{fancyhdr-chapter-np}
+	\warn{Do not try to re-new the \lcs{chapter} because TOC and others use it
+	to define their layout etc.}
+\end{frame}
+\begin{frame}
+	\begin{block}{Robust solution}
+		Copy the baseclass (e.g. \texttt{report.cls}) and modify the needed
+		parts
+	\end{block}
+	\begin{codeblock}{Excerpt from report.cls}
+		\lstinputlisting{report-part-style-chapter-fail.tex}
+	\end{codeblock}
+	\warn{If you are working with the base classes a lot of {\TeX} is waiting
+		to corrupt your soul!!}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Header and footer in KOMA-Script documents}
+
+	KOMA script provides its own header and footer commands that are more
+	robust than \lp{fancyhdr}
+
+	\codex{Usage of \lp{scrlayer-scrpage}}{srclayer-scrpage}
+
+	See also the KOMA-Script documentation starting at section 5.4\\
+	\url{http://mirrors.ctan.org/macros/latex/contrib/koma-script/doc/scrguide.pdf}
+
+\end{frame}
+
+
+
+\begin{frame}
+	\begin{block}{Determining the last page}
+		{\LaTeX} provides no command to determine the last page
+	\end{block}
+	\codex{Cheating with labels to get the last page}{lastpage-np}
+\end{frame}
+
+\subsection{Layout pagenumbers}
+\begin{frame}
+	\codex{Refresh the page counter}{pagecounter}
+	\begin{mitemize}
+		\item arabic - normal digits
+		\item roman - lowercase roman digits
+		\item Roman - uppercase roman digits
+		\item alph - lowercase letters
+		\item Alph - uppercase letters
+	\end{mitemize}
+\end{frame}
+	
+\subsection{Last warning}
+\begin{frame}
+	\begin{block}{Be sparse}
+		\LaTeX{} already provides a very good (because common) typesetting and
+		implements many useful rules. {\color{red}Don't mess with it!}
+	\end{block}
+
+	\begin{block}{Inform yourself}
+		There are several good books on typesetting, e.g. 
+		\begin{itemize}
+			\item Basic Book Design by Kehoe (also a Wikibook)\\
+				\url{http://en.wikibooks.org/wiki/Basic_Book_Design}
+			\item KOMA-Script documentation (pages 23 to 46)\\
+				\url{http://mirror.ctan.org/macros/latex/contrib/koma-script/doc/scrguien.pdf}
+		\end{itemize}
+	\end{block}
+
+For more commands read the ''{\LaTeX} layout manual'' at
+\url{http://www.texdoc.net/texmf-dist/doc/latex/layouts/layman.pdf}
+
+\end{frame}

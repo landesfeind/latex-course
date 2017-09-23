@@ -1,0 +1,120 @@
+\ProvidesPackage{latex-course}
+% Load required packages
+\usepackage{etex}
+\usepackage{etoolbox}
+\usepackage{graphicx,color}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{float}
+\usepackage{array,tabularx,booktabs,multirow,longtable,multicol}
+\usepackage{ifthen}
+\usepackage{amsmath,amsfonts,amssymb,marvosym}
+\usepackage{pgfpages}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{todonotes}
+\usepackage{calc}
+\usepackage{blindtext}
+\usepackage{xstring}
+\usepackage{subfiles}
+\usepackage{chemfig}
+\usepackage{xspace}
+\usepackage{siunitx}
+\usepackage{gensymb}
+
+% Define colors for different types
+\definecolor{code}{rgb}{0.6,0,0}
+\definecolor{comment}{rgb}{0,0.5,0}
+\definecolor{environment}{rgb}{0,0.5,0}
+\definecolor{package}{rgb}{0,0.5,0}
+
+% Configure the lstlistings
+\lstset{
+  language=[LaTeX]TeX,
+  basicstyle=\footnotesize\ttfamily,           % the size of the fonts that are used for the code
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  breaklines=true,                % sets automatic line breaking
+  prebreak={\mbox{\Righttorque}},
+ % postbreak={\mbox{$\hookrightarrow$}}
+  texcsstyle=*\color{code},          % keyword style
+  commentstyle=\color{comment},       % comment style
+%  escapeinside={}{},            % if you want to add LaTeX within your code
+  moretexcs={documentclass,begin,title,author,date,today,
+  	subsection,subsubsection,paragraph,subparagraph,maketitle,
+	includegraphics,newrefformat,prettyref,href,url,
+	floatstyle,newfloat,floatname,multirow,providecommand,color,
+    ifstrequal,ifthenelse,equal,StrChar,shadowbox,organism,
+	listoffigures,tableofcontents,phantomsection,
+	cite,citet,citep,subfile,ProvidesPackage,
+	chemfig,chemname,chemsign,lewis,arrow,schemestart,schemestop,todo}
+}
+
+% Layout code snippets
+% Usage: \code[inline]{ the code to display }
+\newcommand{\code}[2][block]{
+	\ifthenelse{ \equal{#1}{inline} }{}{
+		\begin{center} }
+	{\color{code}\texttt{#2}}
+	\ifthenelse{ \equal{#1}{inline} }{}{
+		\end{center} }
+}
+
+% Layout warnings to the students
+% Usage: \warn{The warning message}
+\newcommand{\warn}[1]{\textbf{\color{red}Warning:} #1}
+
+% Quoting something
+% Usage: \mquote{person to quote from}{the quote itself}
+\newcommand{\mquote}[2]{\begin{quote}#2\end{quote}\begin{flushright}--#1\end{flushright}}
+
+
+% Command to include code examples
+% Usage: \mimage{image.ext}
+%        \mimage[includegraphics-options]{image.ext}
+\newlength{\imgwidth}
+\newlength{\imgheight}
+\newcommand{\mimage}[2][default]{
+	\ifthenelse{ \equal{#1}{default} }{
+		% calculate the width as minimum of the image width or the textwidth 
+		\settowidth{\imgwidth}{\includegraphics{#2}}
+		\setlength{\imgwidth}{\minof{\imgwidth}{\textwidth}}
+
+		% calculate the height as above
+		\settoheight{\imgheight}{\includegraphics{#2}}
+		\setlength{\imgheight}{\minof{\imgheight}{0.6\textheight}}
+		% include image with max width and max height
+		\includegraphics[width=\imgwidth,height=\imgheight,keepaspectratio=true]{#2}
+	}{
+		\includegraphics[#1]{#2}
+	}
+}
+
+% Create a label with a phantom section
+% Usage \plabel{label-id}
+\newcommand{\plabel}[1]{\phantomsection\label{#1}}
+
+% Layout for special types
+% \lcs - Latex command sequence
+\newcommand{\lcs}[1]{ {\color{code}\texttt{\textbackslash{}#1}} } 
+% \lsc - Latex special command. That doesn't start with \ 
+\newcommand{\lsc}[1]{ {\color{code}\texttt{#1}} }
+% \len - LaTeX environment
+\newcommand{\len}[1]{ {\color{code}\texttt{{\textbackslash}begin\{{\color{environment}#1}\}\ldots\textbackslash{}end\{{\color{environment}#1}\}}} }
+% \lp  - LaTeX package
+\newcommand{\lp}[1]{ {\color{package}\texttt{#1}} }
+
+% \ubf - First character in Bold face
+\newcommand{\ubf}[1]{\textbf{\StrChar{#1}{1}}\StrGobbleLeft{#1}{1}\xspace}
+
+% List environments with automatically 2 columns
+\newenvironment{mitemize}{\vspace{-1em}\begin{multicols}{2}\begin{itemize}}{\end{itemize}\end{multicols}\vspace{-1em}}
+\newenvironment{menumerate}{\vspace{-1em}\begin{multicols}{2}\begin{enumerate}}{\end{enumerate}\end{multicols}\vspace{-1em}}
+\newenvironment{mdescription}{\vspace{-1em}\begin{multicols}{2}\begin{description}}{\end{description}\end{multicols}\vspace{-1em}}
+
+% Define the title and author
+\title{Basic {\LaTeX} Course}
+\author{Manuel Landesfeind\\http://www.gobics.de\\Department for Bioinformatics\\Institute for Microbiology and Genetics\\University of G\"ottingen}
+\date{April 7th to 11th 2015}

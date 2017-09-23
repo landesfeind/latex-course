@@ -1,0 +1,9 @@
+%\renewcommand{\emph}[1]{ {\color{red} \emph{#1}} }
+
+\let\oldEmph\emph
+
+Before renewing: \oldEmph{\textbackslash oldEmph} and \emph{\textbackslash emph} 
+
+\renewcommand{\emph}[1]{{\color{red}\oldEmph{#1}}}
+
+After renewing: \oldEmph{\textbackslash oldEmph} and \emph{\textbackslash emph}

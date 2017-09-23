@@ -1,0 +1,70 @@
+\section{References}
+%openout_any = r has to be set in texmf.cnf somewhere deep in the config files for the Makefile to work with references.
+
+\subsection{Basic labels and references}
+\begin{frame}
+	\begin{block}{Labels}
+		Labels are used to reference the last statement, e.g. a section:
+	\end{block}
+	\codex{Label for a section}{label-section}
+
+	\begin{block}{Labels revised}
+		Because labels are just strings it is a ''best practice'' to use a prefix, e.g.
+	\end{block}
+	\codex{Section label with prefix}{label-section-prefix}
+\end{frame}
+
+\begin{frame}
+	\begin{block}{Referencing labels}
+		To reference a label use the \lcs{ref} command:
+	\end{block}
+	\codex{Simple referencing using \lcs{ref}}{label-ref}
+\end{frame}
+
+\begin{frame}
+	Often a reference to a specific paragraph is required
+
+	\codex{Referencing a \lcs{phantomsection}}{label-phantomsection}
+
+\end{frame}
+
+\subsection{Easier referencing with prefixes}
+\begin{frame}
+	The prefixes are used to determine the type of the reference and a custom
+	description is added
+	\codex{Using the \lp{prettyref} package}{prettyref}
+
+	To define a new prefix, the command 
+	\code{\textbackslash{}newrefformat\{prefix\}\{format\}}
+	is used.
+\end{frame}
+
+\subsection{References to figures and tables}
+\begin{frame}
+	\begin{block}{Referencing figures}
+		Also images and tables can be references. \emph{Warning:} 
+		\lcs{label} always \emph{after} the \lcs{caption} command
+	\end{block}
+	\codex{Referencing an image (correct and wrong)}{label-image}
+\end{frame}
+\begin{frame}
+	Also figures and tables can be referenced with \lp{prettyref}:
+	\codex{Referencing a figure with \lcs{prettyref}}{prettyref-figure}
+\end{frame}
+
+\subsection{Clickable links}
+\begin{frame}
+	\begin{block}{Clickable links}
+		With support of the \lp{hyperref} package the PDF output will contain
+		clickable links.
+	\end{block}
+	\codex{Using the \lcs{nameref} command}{nameref}
+\end{frame}
+\begin{frame}
+	\codex{Linking a website}{url}
+	\codex{Linking an email}{url-mailto}
+\end{frame}
+\begin{frame}
+	With \lp{hyperref}, \lcs{url}, and \lcs{href} also PDFs and files can be linked:
+	\codex{Linking a PDF and video with \lcs{href}}{url-file}
+\end{frame}

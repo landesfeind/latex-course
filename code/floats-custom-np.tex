@@ -1,0 +1,18 @@
+\documentclass{article}
+\usepackage{float}
+
+% Define the new float
+\floatstyle{ruled}          
+\newfloat{program}{thp}{lop}
+\floatname{program}{Program}
+
+% Use it in a document
+\begin{document}
+\begin{program}
+	\begin{verbatim}
+#!/usr/bin/perl
+print "Hello World!\n"
+	\end{verbatim}
+  \caption{The ''Hello World!'' program in Perl}
+\end{program}
+\end{document}

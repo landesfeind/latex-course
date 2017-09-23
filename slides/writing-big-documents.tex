@@ -1,0 +1,95 @@
+\section{Writing large documents}
+
+\subsection{Using the \textbackslash{}input command}
+\begin{frame}
+	\LaTeX{} supports the creation of large documents (e.g. thesis, books) by
+	splitting the document into smaller ones.
+
+	\codex{Including documents}{input-simple-np}
+
+	Alternatively use \lcs{include} which is short for
+	\code{\textbackslash{}newpage\textbackslash{}input\{your-document.tex\}}
+\end{frame}
+
+\begin{frame}
+	\begin{block}{Drawbacks using \lcs{input} or \lcs{include}}
+		\begin{itemize}
+			\item When a document grows, the time to compile increases (e.g. this
+				presentation $\approx$6.5 minutes).
+			\item Compiling an included file results in failure because the preamble is
+				missing.
+		\end{itemize}
+	\end{block}
+	\begin{block}{Required solution/package}
+		\begin{enumerate}
+			\item split the document into several files
+			\item single files compilable
+			\item include the preamble of main document
+		\end{enumerate}
+	\end{block}
+\end{frame}
+
+\subsection{The subfiles package}
+\begin{frame}
+	\lp{subfiles} supports exactly this behaviour
+	\codex{Main document using \lp{subfiles} package}{subfiles-np}
+	{\tiny \warn{The \lp{subfiles}
+			(\href{http://www.ctan.org/pkg/subfiles}{CTAN-link}) package is
+			maybe not included in your {\LaTeX}. See slide
+\pageref{installing-a-latex-package} for instructions.}}
+\end{frame}
+\begin{frame}
+	\codex{Subfile containing the introduction}{subfiles-introduction-np}
+\end{frame}
+
+\subsection{Usefull packages}
+\begin{frame}
+	The \lp{todonotes}\footnote{\url{http://www.ctan.de/pkg/todonotes}} helps
+	during development
+	\codex{Adding a todo-note}{todonote}
+\end{frame}
+
+\begin{frame}
+	Add explaining
+	margin-notes\footnote{\url{http://www.ctan.org/pkg/marginnote}} to your document
+
+	\codex{Margin-notes with the marginnote package}{marginnote}
+\end{frame}
+
+\begin{frame}
+	Adding appendices with special numbering
+
+	\codex{Appendix for very long tables}{appendices}
+\end{frame}
+
+
+\subsection{Use folders}
+\begin{frame}
+	\begin{itemize}
+		\item folder for your project\\
+			contains only *.tex files
+		\item ''images''--folder\\
+			contains all graphics
+		\item \ldots
+		\item ''tmp''--folder\\
+			contains the output files
+	\end{itemize}
+\end{frame}
+
+\subsection{Command line {\LaTeX}}
+\begin{frame}
+	\code{pdflatex document.tex}
+
+	\begin{block}{Specific output directory}
+		\code{pdflatex -output-directory tmp document.tex}
+		All temporary and output files are put there and a folder can be
+		deleted easily.
+	\end{block}
+
+	\begin{block}{Environment variables}
+		\code{TEXINPUTS} contains the directories where pdflatex search input
+		files.
+		\code{TEXINPUTS=".:lib:~/LaTeX:\$TEXINPUTS"}
+	\end{block}
+\end{frame}
+

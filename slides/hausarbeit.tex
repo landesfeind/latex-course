@@ -1,0 +1,69 @@
+\documentclass{article}
+\usepackage{latex-course}
+\usepackage{babel}
+
+\title{{\LaTeX}--Kurs\\
+{\small Requirements for crediting}}
+\author{Manuel Landesfeind}
+
+\newcounter{need}
+\setcounter{need}{0}
+\parindent0pt
+
+\newcommand{\required}[1][]{
+	\addtocounter{need}{1}
+	\vspace{2em}
+	\textbf{Requirement \arabic{need}} 
+}
+
+\begin{document}
+\maketitle
+
+\required  Send your document as {\LaTeX} document via mail to\\
+\href{mailto:manuel@gobics.de}{manuel@gobics.de}. Please include the following files
+\begin{itemize}
+	\item the *.tex file containing the document itself
+	\item the *.cls file containing the layout of your document
+	\item *.sty file(s) containing other needed commands
+	\item the *.bib {Bib\TeX} library
+	\item additional external files, e.g. images
+\end{itemize}
+
+\required The document should countain approximately 5 pages to demonstrate
+\textbf{all} techniques you have learned.
+
+\required All headings must be defined using the \lcs{chapter}, \lcs{section}
+etc. commands. 
+
+\required \label{req:commands} Do not use direct text-formatting within your text. If special formatting is
+needed, use semantic commands e.g.
+\begin{itemize}
+	\item \lcs{organism} to render organism names
+	\item \lcs{gene} to render gene names
+	\item \lcs{element} to render elements in sum--formulas and special
+		commands to render often used sum--formulas (e.g. \lcs{water})
+\end{itemize}
+
+\required Use float-environments for images and tables where appropriate, i.e.
+in floating text but not the appendix.
+\warn{Ensure that your floats are referenced in your text.}
+
+\required All sections and floats have to contain labels and references to
+specific sections and floats should be rendered by \lcs{prettyref}.
+
+\warn{Ensure that your floats are referenced in your text.}
+
+\required Include the bibliography using Bibtex in a style of your choice,
+e.g. your own style. \warn{Do not forget to include the Bib\TeX{} style
+(*.bst) in the mail}.
+
+\required Use you own class to define your page layout.
+
+\required All layouting should be set in the class file. Additional commands
+(see requirement 4) should be imported from a new package.
+\begin{lstlisting}
+\usepackage{organism}
+\newcommand{\ath}{\organism{Arabidopsis}{thaliana}}
+
+\end{lstlisting}
+\end{document}

@@ -1,0 +1,14 @@
+\usepackage{ifthen}
+\newcommand{\organism}[3][long]{
+	\ifthenelse{ \equal{#1}{short} }{
+		%true
+		\textit{\StrChar{#2}{1}. #3}
+	}{
+		%false
+		\textit{#2 #3}
+	}
+}
+
+\organism[short]{Arabidopsis}{thaliana}
+
+\organism{Arabidopsis}{thaliana}

@@ -1,0 +1,101 @@
+\section{Create and install new classes and packages}
+
+\subsection{The {\LaTeX} file ecosystem}
+\begin{frame}
+	\begin{block}{{\LaTeX} package files \code[inline]{*.sty}}
+		packages may contain all commands from your preamble
+	\end{block}
+	\begin{block}{{\LaTeX} class files \code[inline]{*.cls}}
+		Classes are included/selection via the \lcs{documentclass}
+	\end{block}
+\end{frame}
+
+\subsection{Creating your own package}
+\begin{frame}
+	\begin{codeblock}{The beginning of the \code[inline]{latex-course.sty} file
+			\hfill {\tiny (\href{run:latex-course.sty}{Code})}}
+		\lstinputlisting[lastline=9]{latex-course.sty}
+	\end{codeblock}
+	\warn{The name of the file (without extension) and the name in
+	 \lcs{ProvidesPackage} have to match}
+\end{frame}
+
+\subsection{Creating your own class}
+\begin{frame}
+	\begin{codeblock}{Starting a new class}
+		\lstinputlisting[lastline=3]{gaug-thesis-proposal.cls}
+	\end{codeblock}
+	\warn{The name of the file (without extension) and the name in
+	 \lcs{ProvidesClass} have to match}
+\end{frame}
+
+\begin{frame}
+	\begin{codeblock}{Create your own variable}
+		\lstinputlisting[firstline=5,lastline=6]{gaug-thesis-proposal.cls}
+	\end{codeblock}
+	Define your own variable and load it with a default value.
+\end{frame}
+
+\begin{frame}
+	Document class options can be declared as own options or given to a base class.
+	\begin{codeblock}{Declaring option}
+		\lstinputlisting[firstline=8,lastline=12]{gaug-thesis-proposal.cls}
+	\end{codeblock}
+\end{frame}
+
+\begin{frame}
+	Document class options can be declared as own options or given to the
+	loaded base class
+	\begin{codeblock}{Declaring option}
+		\lstinputlisting[firstline=8,lastline=15]{gaug-thesis-proposal.cls}
+	\end{codeblock}
+	Load a base class for your class.
+\end{frame}
+
+\subsection{Differences between class and package}
+\begin{frame}
+	\begin{block}{When is a package a class?}
+		Rule of thumb: Are the commands to be used in other documents/classes?
+		You have a package!
+	\end{block}
+\end{frame}
+
+\subsection{The special @-letter}
+\begin{frame}
+	\begin{block}{In normal text}
+		The @ is generally assumed to be an ''other'' character $\rightarrow$
+		can not be used in command names.
+	\end{block}
+
+	\begin{block}{In classes and packages}
+		The @ is a normal letter and \textbf{can} be used in command names.
+		$\rightarrow$ used to protect class internal methods 
+	\end{block}
+
+	Good practice: Use @-commands to store data
+\end{frame}
+
+\subsection{installing a {\LaTeX} package manually}
+\label{installing-a-latex-package}
+\begin{frame}
+	\begin{itemize}
+		\item Many packages are shipped with the major {\LaTeX} distributions
+		\item if not a \code[inline]{*.sty} package file might be available for
+			download
+		\item a few require installation (e.g. \lp{subfiles})
+	\end{itemize}
+	
+	\begin{columns}[c]
+		\column{0.5\textwidth}
+		\begin{block}{Required files for installation (e.g. \lp{subfiles})}
+			\begin{itemize}
+				\item subfiles.dtx \item subfiles.ins
+			\end{itemize}
+		\end{block}
+		\column{0.5\textwidth}
+		\begin{block}{Compiling the package}
+			\code{latex subfiles.ins}
+			will produce the file \code[inline]{subfiles.sty}
+		\end{block}
+	\end{columns}
+\end{frame}

@@ -1,0 +1,12 @@
+\newcommand{\myquoteendparam}{}
+\newenvironment{myquote}[1]{
+	\renewcommand{\myquoteendparam}{#1}
+	\begin{quote}
+}{	
+	\end{quote}
+	\begin{flushright}--- \myquoteendparam{}\end{flushright}
+}
+ 
+\begin{myquote}{Wikipedia}
+	{\LaTeX} ist ein Softwarepaket, das die Benutzung des Textsatzprogramms TeX mit Hilfe von Makros vereinfacht. LaTeX liegt derzeit in der Version 2$\epsilon$ vor.
+\end{myquote}

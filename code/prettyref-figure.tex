@@ -1,0 +1,13 @@
+\usepackage{prettyref}
+\newrefformat{fig}{figure \ref{#1}}
+
+\section{Methods}
+\label{sec:methods}
+
+\begin{figure}
+	\centering\includegraphics[width=50pt]{default-image.pdf}
+	\caption{This is the default example image}
+	\label{fig:my-figure}
+\end{figure}
+
+As described in \prettyref{sec:methods} with \prettyref{fig:my-figure}.

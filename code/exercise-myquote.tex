@@ -1,0 +1,23 @@
+\newcommand{\myquoter}{}
+\newenvironment{myquote}[1]{
+	\renewcommand{\myquoter}{#1}
+	\begin{center}
+	\begin{minipage}[c]{0.3\textwidth} 
+		\includegraphics[width=\textwidth]{quote-marks.pdf}
+	\end{minipage}
+	\begin{minipage}[c]{0.69\textwidth}
+}{
+	\begin{flushright}--- \myquoter\end{flushright}
+	\end{minipage}
+\end{center}
+}
+
+\blindtext[1]
+
+\begin{myquote}{Donald E. Knuth (1996)}
+		[\TeX\ is] a new typesetting system intended for the creation
+of beautiful books---and especially for books that contain a lot of
+mathematics.
+\end{myquote}
+
+\blindtext[1]

@@ -1,0 +1,176 @@
+\section{Introduction}
+\subsection{About \LaTeX}
+
+\begin{frame}
+	\begin{columns}[onlytextwidth]
+		\column{0.59\linewidth}
+			\mquote{Wikipedia}{\LaTeX{} is a document markup language and document preparation system for
+			the \TeX{} typesetting program.}
+			\begin{itemize}
+				 \item 1987 - Donald E. Knuth developed \TeX{} (Setter) for writing his book
+				''The art of computer programming''
+				\item  1994 - \LaTeX{} (Layout) is developed by Leslie Lamport for
+					easier use of {\TeX}
+				\item  Active community develops \LaTeX{} makros and additional packages.
+			\end{itemize}
+		\column{0.39\linewidth}
+			\mimage{latex_stack.pdf}
+	\end{columns}
+\end{frame}
+
+\subsection{Why developing texts in \LaTeX{}}
+\begin{frame}
+	\begin{block}{Devide writing and layout}
+		While writing \LaTeX{} the final layout is not visible immediately
+		(opposed to WYSIWYG word processors). 
+		\begin{itemize}
+			\item focuses the writer on the writing, thus more productive
+				\inote{writer is not distracted by the layout}
+			\item special typesetting (e.g. sigils)
+				\inote{many letter \todo{Folgen} are better readable if the 
+					were rendered special e.g. ff}
+		\end{itemize}
+	\end{block}
+
+	\begin{block}{Portability}
+		Simple text-files can be opened with any editor in any operating 
+		system.
+		\inote{ever tried to open a docX file from work on your home PC with
+		an older MS Office version?}
+		\inote{text files can also be opened in 10 years}
+	\end{block}
+\end{frame}
+
+\subsection{Resources}
+\begin{frame}
+
+	\begin{itemize}
+		\item CTAN \url{http://www.ctan.org/}\\
+			the \emph{C}omprehensive \emph{T}eX \emph{A}rchive \emph{N}etwork
+		\item LaTeX Wikibook\\
+			\url{http://en.wikibooks.org/wiki/LaTeX}
+
+		\item \LaTeX{} templates\\
+			\url{http://www.latextemplates.com}
+	\end{itemize}
+\end{frame}
+
+
+\subsection{Writing a \LaTeX{} document}
+\begin{frame}
+\begin{center}
+	\mimage[width=0.6\textwidth]{latex_compile_process.pdf}
+\end{center}
+\end{frame}
+
+
+\subsection{Available Software}
+\begin{frame}
+	\frametitle{\LaTeX packages}
+
+	\begin{block}{Texlive (Linux)}
+		Available in all distributions, e.g. Ubuntu, Suse Linux. Install it
+		from your software center (attention: several packages may be
+		required).
+	\end{block}
+	\begin{block}{MiKTeX (Windows)}
+		Freely available at \url{http://www.miktex.org}.
+	\end{block}	
+	\begin{block}{MacTeX (Mac OS)}
+		Freely available at \url{http://www.tug.org/mactex}.
+	\end{block}
+\end{frame}
+
+\subsection{\LaTeX{} editors}
+\begin{frame}
+
+	\inote{Remember: What is the difference between a text-editor and -processor?}
+	Every simple text-editor can be used but more comfortable:
+
+	\begin{columns}[T,onlytextwidth]
+	\column{0.49\textwidth}
+		\begin{block}{TeXMaker}
+			\url{http://www.xm1math.net/texmaker}
+			\begin{itemize}
+				\item free and cross-platform editor
+				\item syntax highlightning
+				\item compile via mouse click
+				\item displays previews
+			\end{itemize}
+		\end{block}
+	\column{0.49\textwidth}
+		\begin{block}{Kile}
+			\url{http://kile.sourceforge.net}
+			\begin{itemize}
+				\item integrated {\LaTeX} environment
+				\item easily installed on all Linux distributions
+			\end{itemize}
+		\end{block}
+	\end{columns}
+
+	\vfill
+
+	\begin{block}{Mobile devices}
+		Editors for mobile devices can be found in the Play/App Store
+		(may require web-access to compile the documents).
+	\end{block}
+\end{frame}
+\subsection{Creation using the Texmaker IDE}
+\begin{frame}
+	\begin{enumerate}
+		\item Start Texmaker
+		\item create a new document
+		\item insert basic information
+		\item compile and view
+	\end{enumerate}
+
+	\mimage{texmaker-intro.pdf}
+\end{frame}
+
+\subsection{A first example}
+\begin{frame}
+	\codex{Basic document}{basic-document-np}
+	\begin{itemize}
+		\item \lcs{documentclass} defines the type of the text e.g. book,
+			article, report
+		\item \len{document} contains the actual text (the part
+			before is called \emph{preamble})
+		\item \lcs{maketitle} produces a basic heading
+	\end{itemize}
+\end{frame}
+\subsection{Names and ...}
+\begin{frame}
+	\begin{description}
+		\item[package] is an additional \LaTeX{} plugin with a special purpose
+			(e.g. for images, specific mathematical/chemical formulas)
+		\item[command] specific modification of the document by the means of
+			the given command, e.g. emphasizing a text or bold/italic font.
+		\item[environment] specific modification of a longer part of the text,
+			e.g. centering a paragraph.
+	\end{description}
+\end{frame}
+
+
+
+\subsection{Compiling documents}
+\begin{frame}
+	Resulting file formats are
+	\href{http://en.wikipedia.org/wiki/Page_description_language}{\emph{page description
+	format}} files:
+	\begin{block}{File formats}
+		\begin{description}
+			\item[DVI] Device independent file format\\
+				\url{http://de.wikipedia.org/wiki/Device_independent_file_format}
+			\item[PS] PostScript\\
+				\url{http://de.wikipedia.org/wiki/PostScript}
+			\item[PDF] Portable Document Format\\
+				\url{http://en.wikipedia.org/wiki/PDF}
+		\end{description}
+	\end{block}
+
+	\begin{block}{Using PDFLaTeX on the command line}
+		\code{pdflatex document.tex}
+		It is preferable to execute the command twice because specific parts
+		of the document are first correct after the second run.
+	\end{block}
+\end{frame}
